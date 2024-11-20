@@ -7,7 +7,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
-
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
@@ -57,22 +62,27 @@ export default function Home() {
       title: "Zahrat AlReef Electrical and SanitaryWare TR. LLC",
       description: "Developed a robust web application for an electricaland sanitaryware shop, providing users with the ability to browse an extensive catalog of products.",
       image: "/images/zahrat1.png", // Replace with your image path,
-      technology: "React.js, CSS, JavaScript,Tailwind"
-
+      technology: "React.js, CSS, JavaScript,Tailwind",
+      githubLink: "",
+      liveLink: ""
     },
     {
       id: 2,
       title: "Radish Grill and Cafe",
       description: " Created an engaging and modern web application for Radish Grill and Cafe, showcasing the menu with categories.",
       image: "/images/radish.png",
-      technology: "Next.js, React.js, Tailwind CSS, JavaScript"
+      technology: "Next.js, React.js, Tailwind CSS, JavaScript",
+      githubLink: "",
+      liveLink: ""
     },
     {
       id: 3,
       title: "S-Kart",
       description: "Developed S-kart, a fully-featured e-commerce platform with a Node.js and Express.js backend, React.js frontend,and MongoDB as the database.",
       image: "/images/skart.png",
-      technology: " React.js, Tailwind CSS, Redux, JavaScript, Node.js, Express.js, MongoDB"
+      technology: " React.js, Tailwind CSS, Redux, JavaScript, Node.js, Express.js, MongoDB",
+      githubLink: "",
+      liveLink: ""
 
     },
     {
@@ -80,7 +90,9 @@ export default function Home() {
       title: "Restaurant Advaisor",
       description: "Developed a web application that allows users to select their location and find top restaurants based on customer ratings.",
       image: "/images/restaurant.png",
-      technology: "React.js,Bootstrap, CSS, JavaScript, Node.js, Express.js, MongoDB"
+      technology: "React.js,Bootstrap, CSS, JavaScript, Node.js, Express.js, MongoDB",
+      githubLink: "",
+      liveLink: ""
     },
 
   ]
@@ -98,7 +110,9 @@ export default function Home() {
 
               <a href="/" className="flex items-center" data-aos="fade-down">
                 {/* <img src="./images/icon.png" alt="Icon" className="w-56 h-16" /> */}
-                <h1>Safwan</h1>
+                <h1 className=" heading text-3xl font-bold">
+                  Safwa<span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-orange-500">N</span>
+                </h1>
               </a>
 
 
@@ -106,7 +120,7 @@ export default function Home() {
               {/* Desktop Menu */}
               <div className="hidden lg:flex space-x-8">
                 {navLinks.map(({ name, href }) => (
-                  <a key={name} href={`#${href}`} className="hover:text-yellow-500">
+                  <a key={name} href={`#${href}`} className=" text-white hover:text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-orange-500">
                     {name}
                   </a>
                 ))}
@@ -116,7 +130,7 @@ export default function Home() {
               <a
                 onClick={toggleModal}
                 data-aos="fade-down"
-                className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-500
+                className=" heading hidden md:block px-6 py-3 rounded-full bg-gradient-to-r from-purple-500
                  to-orange-500 text-white text-lg hover:scale-105 transform transition duration-300"
               >
                 Connect
@@ -160,16 +174,17 @@ export default function Home() {
           {isOpen && (
             <div className={`md:hidden text-center px-4 py-2 space-y-4 flex flex-col text-white`} data-aos="fade-down">
               {navLinks.map(({ name, href }) => (
-                <a key={name} href={`#${href}`} className={`text-black" hover:text-blue-600`}>
+                <a key={name} href={`#${href}`} className={`text-white hover: text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-orange-500`}>
                   {name}
                 </a>
               ))}
               <a
-                href="tel:+917034558800"
-                className={`border-2 text-white border-blue text-sm sm:text-base md:text-lg font-semibold py-2 sm:py-3 
+                onClick={toggleModal}
+                className={` heading bg-gradient-to-r from-purple-500
+                 to-orange-500 text-white border-blue text-sm sm:text-base md:text-lg font-semibold py-2 sm:py-3 
             md:py-2 px-4 sm:px-6 md:px-4 rounded-3xl hover:bg-gray-50 transition`}
               >
-                Enquiry
+                Connect
               </a>
             </div>
           )}
@@ -195,8 +210,8 @@ export default function Home() {
           {/* Main Heading */}
           <div className="text-center p-4 max-w-xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-aos="zoom-in">
-              I'm <span className="text-purple-500">Muhammed Safwan</span>,<br />
-              <span className="text-orange-500">Full Stack developer</span>
+              I'm <span className="text-purple-500 heading">Muhammed Safwan</span>,<br />
+              <span className="text-orange-500 heading">Full Stack developer</span>
             </h1>
             <p className="mt-4 text-lg md:text-xl text-gray-400" data-aos="zoom-in">
               I am a Full Stack Developer passionate about building dynamic user experiences, responsive designs, and robust backend systems.
@@ -220,39 +235,77 @@ export default function Home() {
 
               {/* Modal Popup */}
               {isOpens && (
-                <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
-                  <div className="bg-black p-8 rounded-lg w-96 shadow-lg">
-                    <h2 className="text-2xl font-semibold mb-4">Connect with me</h2>
-                    <div className="space-y-4">
-                      <div className="flex items-center space-x-3">
-
-                        <a href="https://wa.me/your-whatsapp-number" target="_blank" rel="noopener noreferrer" className="text-lg">WhatsApp</a>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        {/* <FontAwesomeIcon icon={faPhoneAlt} className="text-blue-500" /> */}
-                        <a href="tel:+your-phone-number" className="text-lg">Call</a>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        {/* <FontAwesomeIcon icon={faEnvelope} className="text-gray-500" /> */}
-                        <a href="mailto:your-email@example.com" className="text-lg">Email</a>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        {/* <FontAwesomeIcon icon={faInstagram} className="text-pink-500" /> */}
-                        <a href="https://instagram.com/your-username" target="_blank" rel="noopener noreferrer" className="text-lg">Instagram</a>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        {/* <FontAwesomeIcon icon={faLinkedin} className="text-blue-700" /> */}
-                        <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" className="text-lg">LinkedIn</a>
-                      </div>
-                    </div>
-                    <button
-                      className="mt-4 w-full px-6 py-3 rounded-full bg-red-500 text-white"
-                      onClick={toggleModal}
-                    >
-                      Close
-                    </button>
-                  </div>
-                </div>
+               <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
+               <div className="bg-black p-8 rounded-lg w-96 shadow-lg relative">
+                 {/* Close Icon */}
+                 <svg
+                   className="w-6 h-6 absolute top-4 right-4 cursor-pointer text-gray-400 hover:text-white"
+                   fill="none"
+                   stroke="currentColor"
+                   viewBox="0 0 24 24"
+                   onClick={toggleModal}
+                 >
+                   <path
+                     strokeLinecap="round"
+                     strokeLinejoin="round"
+                     strokeWidth="2"
+                     d="M6 18L18 6M6 6l12 12"
+                   />
+                 </svg>
+             
+                 {/* Modal Content */}
+                 <h2 className="text-2xl font-semibold mb-4 heading">Connect with me</h2>
+                 <div className="space-y-4">
+                   <div className="flex items-center space-x-3">
+                     <a
+                       href="https://wa.me/your-whatsapp-number"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       className="text-lg"
+                     >
+                       WhatsApp
+                     </a>
+                   </div>
+                   <div className="flex items-center space-x-3">
+                     <a href="tel:+your-phone-number" className="text-lg">
+                       Call
+                     </a>
+                   </div>
+                   <div className="flex items-center space-x-3">
+                     <a href="mailto:your-email@example.com" className="text-lg">
+                       Email
+                     </a>
+                   </div>
+                   <div className="flex items-center space-x-3">
+                     <a
+                       href="https://instagram.com/your-username"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       className="text-lg"
+                     >
+                       Instagram
+                     </a>
+                   </div>
+                   <div className="flex items-center space-x-3">
+                     <a
+                       href="https://linkedin.com/in/your-profile"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       className="text-lg"
+                     >
+                       LinkedIn
+                     </a>
+                   </div>
+                 </div>
+                 <button
+                   className="mt-4 w-full px-6 py-3 rounded-full bg-red-500 text-white"
+                   onClick={toggleModal}
+                 >
+                   Close
+                 </button>
+               </div>
+             </div>
+             
               )}
             </div>
 
@@ -268,15 +321,15 @@ export default function Home() {
               {/* Left Section - Image */}
               <div className="w-full md:w-1/3 flex justify-center md:justify-start">
                 <img
-                  src="https://via.placeholder.com/200" // Replace with your image URL
+                  src="./images/bg.png" // Replace with your image URL
                   alt="Profile"
-                  className="rounded-xl w-48 h-48 object-cover"
+                  className="  "
                 />
               </div>
 
               {/* Right Section - Text and Skills */}
               <div className="w-full md:w-2/3 mt-8 md:mt-0 md:ml-8">
-                <h2 className="text-4xl font-bold text-white">
+                <h2 className="text-4xl font-bold text-white heading">
                   About <span className="text-purple-500">me</span>
                 </h2>
                 <p className="text-gray-300 mt-4 leading-7">
@@ -300,7 +353,7 @@ export default function Home() {
         <section id="skill" className="bg-gray-900 text-white py-12">
           <div className="max-w-7xl mx-auto text-center px-4">
             {/* Title */}
-            <h2 className="text-4xl font-bold mb-4">Skills</h2>
+            <h2 className="text-4xl font-bold mb-4 heading">Skills</h2>
             <p className="text-gray-400 mb-8">LET'S TALK TECHNOLOGY.</p>
 
             {/* Skills Grid */}
@@ -317,28 +370,23 @@ export default function Home() {
         <section id="service">
           <div className="bg-black text-white min-h-screen py-16 px-4 flex flex-col items-center">
             {/* Heading */}
-            <h2 className="text-4xl font-bold text-white">
+            <h2 className="text-4xl font-bold text-white heading">
               My <span className="text-purple-500">Services</span>
             </h2>
 
             {/* Service Cards */}
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 w-full max-w-6xl">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 w-full max-w-6xl ">
               {services.map((service) => (
                 <div
                   key={service.id}
                   className={`relative p-6 border border-gray-600 rounded-lg hover:bg-gradient-to-r hover:from-purple-500 hover:to-orange-500 hover:border-transparent transition-all duration-300`}
                 >
-                  <p className="text-sm font-semibold text-gray-300 mb-2">{`0${service.id}`}</p>
-                  <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-orange-500 mb-4">
+                  {/* <p className="text-sm font-semibold text-gray-300 mb-2">{`0${service.id}`}</p> */}
+                  <h3 className=" hover:text-white text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-orange-500 mb-4">
                     {service.title}
                   </h3>
                   <p className="text-gray-400 mb-4">{service.description}</p>
-                  <a
-                    href="#"
-                    className="text-purple-400 font-semibold hover:text-orange-400 flex items-center gap-1"
-                  >
-                    Read More <span>&rarr;</span>
-                  </a>
+
                 </div>
               ))}
             </div>
@@ -350,7 +398,7 @@ export default function Home() {
         <section id="works">
           <div className="bg-black text-white py-16 px-4 flex flex-col items-center">
             {/* Heading */}
-            <h2 className="text-4xl font-bold text-white">
+            <h2 className="text-4xl font-bold text-white heading">
               My <span className="text-purple-500">latest works</span>
             </h2>
 
@@ -359,30 +407,32 @@ export default function Home() {
               {works.map((work) => (
                 <div
                   key={work.id}
-                  className="relative rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300"
+                  className="relative rounded-lg overflow-hidden shadow-lg h-auto"
                 >
                   {/* Image */}
                   <img
                     src={work.image}
                     alt={work.title}
-                    className="w-full h-56 object-cover"
+                    className="w-full  object-cover"
                   />
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-                  {/* Content */}
-                  <div className="absolute bottom-4 left-4">
+
+                  {/* Content Section */}
+                  <div className="p-4 bg-gray-800">
+                    {/* Title and Subtitle */}
                     <h3 className="text-lg font-bold text-white">{work.title}</h3>
                     <p className="text-sm text-gray-300">{work.subtitle}</p>
-                  </div>
-                  {/* Detailed Description Section */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75">
-                    <p className="text-sm text-gray-300 mb-4">{work.description}</p>
-                    <div className="flex gap-4">
+
+                    {/* Description */}
+                    <p className="text-sm text-gray-400 mt-2">{work.description}</p>
+                    <p className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-orange-500 mt-2">{work.technology}</p>
+
+                    {/* Buttons */}
+                    <div className="mt-4 flex gap-4">
                       <a
                         href={work.liveLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors"
+                        className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded-lg hover:opacity-90 transition-opacity"
                       >
                         Live Demo
                       </a>
@@ -390,7 +440,7 @@ export default function Home() {
                         href={work.githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+                        className="bg-gradient-to-r from-gray-700 to-gray-900 text-white px-4 py-2 rounded-lg hover:opacity-90 transition-opacity"
                       >
                         GitHub
                       </a>
@@ -400,6 +450,7 @@ export default function Home() {
               ))}
             </div>
 
+
           </div>
 
         </section>
@@ -407,11 +458,19 @@ export default function Home() {
         {/* contact us */}
 
         <section id="contact">
-          <div className="min-h-screen flex items-center justify-center bg-black text-white p-8">
+          <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white p-8 space-y-8">
+
+            {/* Common Centered Heading */}
+            <div className="text-center">
+              <h1 className=" heading text-5xl font-extrabold text-gradient bg-gradient-to-r from-pink-500 via-orange-500 to-yellow-500 inline-block text-transparent bg-clip-text">
+                Contact Us
+              </h1>
+              <p className="mt-4 text-gray-400">
+                Feel free to reach out for any project inquiries or collaboration opportunities!
+              </p>
+            </div>
 
             <div className="max-w-5xl w-full grid md:grid-cols-2 gap-8">
-              {/* Heading */}
-
               {/* Left Side */}
               <div>
                 <h1 className="text-4xl font-bold text-gradient text-gradient-to-r from-pink-500 via-orange-500 to-yellow-500">
@@ -420,7 +479,7 @@ export default function Home() {
                 <p className="mt-4 text-gray-400">
                   I&apos;m currently available to take on new projects, so feel free
                   to send me a message about anything that you want me to work on. You
-                  can contact anytime.
+                  can contact me anytime.
                 </p>
                 <div className="mt-6 space-y-4">
                   <div className="flex items-center">
@@ -433,7 +492,7 @@ export default function Home() {
                   </div>
                   <div className="flex items-center">
                     <span className="text-xl mr-4">📍</span>
-                    <span>Kannur, Kerala ,India</span>
+                    <span>Kannur, Kerala, India</span>
                   </div>
                 </div>
               </div>
@@ -508,7 +567,7 @@ export default function Home() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-2 mt-4 bg-gradient-to-r from-pink-500 via-orange-500 to-yellow-500 text-white font-bold rounded-lg hover:opacity-90 focus:outline-none focus:ring-4 focus:ring-pink-500 focus:ring-offset-2"
+                  className="w-full py-2 mt-4 bg-gradient-to-r from-purple-500 to-orange-500 text-white font-bold rounded-lg hover:opacity-90 focus:outline-none focus:ring-4 focus:ring-pink-500 focus:ring-offset-2"
                 >
                   Submit now
                 </button>
@@ -518,6 +577,7 @@ export default function Home() {
         </section>
 
 
+
         {/* footer */}
 
 
@@ -525,12 +585,11 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
             {/* Left Section */}
             <div>
-              <h1 className="text-3xl font-bold">
-                Safwa<span className="text-gradient bg-gradient-to-r from-pink-500 via-purple-500 to-orange-500">N</span>
+              <h1 className="text-3xl font-bold heading">
+                Safwa<span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-orange-500">N</span>
               </h1>
               <p className="mt-2 text-gray-400">
-                I am a frontend developer from USA with 10 years of experience in
-                companies like Microsoft, Tesla and Apple.
+                I am a full stack MERN developer 
               </p>
             </div>
 
@@ -548,7 +607,7 @@ export default function Home() {
               </div>
               <button
                 type=""
-                className="bg-gradient-to-r from-pink-500 via-purple-500 to-orange-500 px-4 py-2 rounded-full text-white
+                className="bg-gradient-to-r from-purple-500 to-orange-500 px-4 py-2 rounded-full text-white
                  font-bold hover:opacity-90 focus:outline-none focus:ring-4 focus:ring-pink-500 focus:ring-offset-2"
               >
                 Subscribe
@@ -569,13 +628,25 @@ export default function Home() {
               <a href="#" className="hover:text-white">
                 Privacy Policy
               </a>
-              <a href="#" className="hover:text-white">
+              <a  onClick={toggleModal} className="hover:text-white">
                 Connect with me
               </a>
             </div>
           </div>
         </footer>
 
+        <button
+        onClick={scrollToTop}
+        className="bg-gradient-to-r from-purple-500
+                 to-orange-500 fixed bottom-8 right-8 z-10 rounded-full  hover:bg-white  shadow-lg 
+      inline-flex items-center justify-center w-12 h-12 text-white text-2xl font-bold transition-transform duration-300
+      transform hover:scale-110 hover:shadow-2xl hover:text-blue hover:boder-2 hover:border-blue"
+        aria-label="Scroll to top"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+        </svg>
+      </button>
 
       </div>
     </>
